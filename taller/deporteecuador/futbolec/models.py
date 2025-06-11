@@ -23,6 +23,7 @@ class Jugador(models.Model):
         return f"{self.nombre} - #{self.numero_camiseta} ({self.equipo_futbol.nombre})"
 
 
+
 class Campeonato(models.Model):
     nombre_campeonato = models.CharField(max_length=100)
     nombre_auspiciante = models.CharField(max_length=100)
@@ -36,8 +37,6 @@ class CampeonatoEquipos(models.Model):
     equipo_futbol = models.ForeignKey(EquipoFutbol, on_delete=models.CASCADE, related_name="campeonatos")
     campeonato = models.ForeignKey(Campeonato, on_delete=models.CASCADE, related_name="equipos")
 
-    class Meta:
-        unique_together = ('año', 'equipo_futbol', 'campeonato')
 
     def __str__(self):
-        return f"{self.año} - {self.equipo_futbol.nombre} in {self.campeonato.nombre_campeonato}"
+        return f"{self.anio} - {self.equipo_futbol.nombre} in {self.campeonato.nombre_campeonato}"
